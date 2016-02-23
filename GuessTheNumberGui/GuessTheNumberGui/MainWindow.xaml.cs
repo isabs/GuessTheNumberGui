@@ -22,10 +22,12 @@ namespace GuessTheNumberGui
     public partial class MainWindow : Window
     {
         public List<CompareStrategy> Modes { get; set; }
+        public string ButtonText { get; private set; }
 
         public MainWindow()
         {
             Modes = new List<CompareStrategy> {new CompareDigits(), new CompareAll()};
+            ButtonText = "Start";
             InitializeComponent();
             this.DataContext = this;
         }
@@ -37,7 +39,7 @@ namespace GuessTheNumberGui
 
         private void btnCheckStart_Click(object sender, RoutedEventArgs e)
         {
-
+            //if(ButtonText=="Start" && )
         }
     }
 }

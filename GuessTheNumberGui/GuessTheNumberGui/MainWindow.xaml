@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GuessTheNumberGui"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Guess the number! by isabs" Height="350" Width="640">
+        Title="Guess the number!" Height="350" Width="640">
     <Grid Background="Black">
-        
+
         <Button x:Name="btnCheckStart" 
                 Background="DarkSlateBlue" 
                 Foreground="White" 
@@ -16,7 +17,7 @@
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"/>
-        
+
         <Label x:Name="lblResults" 
                Content="" 
                Foreground="White" 
@@ -25,7 +26,7 @@
                VerticalAlignment="Top" 
                Height="299" 
                Width="306"/>
-        
+
         <Label x:Name="lblHeading" 
                Content="Guess the random number" 
                Foreground="White" 
@@ -33,7 +34,7 @@
                Margin="10,35,0,0" 
                VerticalAlignment="Top" 
                Width="155"/>
-        
+
         <ComboBox x:Name="cmbMode" 
                   Background="DarkSlateBlue" 
                   Foreground="DarkSlateBlue" 
@@ -43,11 +44,8 @@
                   Width="120" 
                   SelectionChanged="comboBox_SelectionChanged" 
                   ItemsSource="{Binding Path=Modes}"
-                  
+                  DisplayMemberPath="Name"
                    />
-        <!--ItemsSource="{Binding Source={x:Static local:MainWindow.Lista}, Path=Lista}"-->
-        <!--ItemsSource="{Binding Lista}" d:DataContext="{d:DesignInstance local:MainWindow}"-->
-        <!--ItemsSource="{Binding Lista}" d:Lista="{d:string }-->
 
         <CheckBox x:Name="chkWithSum" 
                   Foreground="White" 
@@ -56,7 +54,7 @@
                   HorizontalAlignment="Left" 
                   Margin="229,80,0,0" 
                   VerticalAlignment="Top"/>
-        
+
         <Label x:Name="lblSum" 
                Content="" 
                Foreground="White" 
@@ -65,5 +63,40 @@
                VerticalAlignment="Top" 
                Width="75"/>
 
+        <xctk:IntegerUpDown
+            Name="txtNumber2"
+            Value="0" 
+            Minimum="0"
+            Maximum="9"
+            Margin="97,130,485,160"
+            Foreground="White"
+            Background="DarkSlateBlue"/>
+
+        <xctk:IntegerUpDown
+            Name="txtNumber1"
+            Value="0" 
+            Minimum="0"
+            Maximum="9"
+            Margin="25,130,557,160"
+            Foreground="White"
+            Background="DarkSlateBlue"/>
+
+        <xctk:IntegerUpDown
+            Name="txtNumber4"
+            Value="0" 
+            Minimum="0"
+            Maximum="9"
+            Margin="241,130,341,160"
+            Foreground="White"
+            Background="DarkSlateBlue"/>
+
+        <xctk:IntegerUpDown
+            Name="txtNumber3"
+            Value="0" 
+            Minimum="0"
+            Maximum="9"
+            Margin="169,130,413,160"
+            Foreground="White"
+            Background="DarkSlateBlue"/>
     </Grid>
 </Window>
