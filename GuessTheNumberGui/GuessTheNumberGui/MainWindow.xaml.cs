@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GuessTheNumber;
 using GuessTheNumber.CompareStrategies;
+using GuessTheNumberGui.commands;
 using Xceed.Wpf.Toolkit;
 
 namespace GuessTheNumberGui
@@ -24,13 +25,15 @@ namespace GuessTheNumberGui
     public partial class MainWindow : Window
     {
         public List<CompareStrategy> Modes { get; set; }
-        public string ButtonText { get; private set; }
+        public string SumLabel { get; set; }
         private Number Number { get; set; }
+
+        public ICommand StartClickCommand { get { return new StartCommand(StartGame, () => true); } }
 
         public MainWindow()
         {
             Modes = new List<CompareStrategy> {new CompareDigits(), new CompareAll()};
-            ButtonText = "Start";
+            SumLabel = string.Empty;
             InitializeComponent();
             this.DataContext = this;
         }
@@ -40,24 +43,39 @@ namespace GuessTheNumberGui
 
         }
 
-        private void btnCheckStart_Click(object sender, RoutedEventArgs e)
+        private void StartGame()
         {
             var value = new[] { SetUninitializedNumeric(txtNumber1), SetUninitializedNumeric(txtNumber2),
                 SetUninitializedNumeric(txtNumber3), SetUninitializedNumeric(txtNumber4) };
 
-            Console.WriteLine(ButtonText);
+            CompareStrategy comparer; 
 
-            if (ButtonText == "Start" && (Number == null || Number.Compare(value)))
+            if((CompareStrategy)cmbMode.SelectedItem == null) comparer = new CompareAll();
+            else comparer = (CompareStrategy)cmbMode.SelectedItem;
+
+            if (Number == null || Number.Compare(value))
             {
-                ButtonText = "Check!";
+                var withSum = chkWithSum.IsChecked ?? false; 
 
-                
+                btnStart.Visibility = Visibility.Hidden;
+                btnCheck.Visibility = Visibility.Visible;
+
+                Number = new Number(4, comparer);
+
+                Number.Start();
+
+                cmbMode.IsReadOnly = true;
+
+                if (withSum)
+                {
+                    SumLabel = "Sum of digits should be " + Number.GetSumOfDigits();
+                }
 
                 //Number = new Number(cmbMode.GetValue());
             }
             else
             {
-                ButtonText = "Meh!";
+                throw new Exception("Clicked Start Button, which cannot exist...");
             }
         }
 
