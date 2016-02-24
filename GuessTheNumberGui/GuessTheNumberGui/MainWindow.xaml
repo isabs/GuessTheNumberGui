@@ -9,14 +9,27 @@
         Title="Guess the number!" Height="350" Width="640">
     <Grid Background="Black">
 
-        <Button x:Name="btnCheckStart" 
+        <Button x:Name="btnStart" 
                 Background="DarkSlateBlue" 
                 Foreground="White" 
-                Content="Start" 
+                Content="{Binding ButtonText}" 
+                Command="{Binding ButtonClickCommand}"
                 HorizontalAlignment="Left" 
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
-                Width="75"/>
+                Width="75"
+                Visibility="Visible"/>
+
+        <Button x:Name="btnCheck" 
+                Background="DarkSlateBlue" 
+                Foreground="White" 
+                Content="{Binding ButtonText}" 
+                Command="{Binding ButtonClickCommand}"
+                HorizontalAlignment="Left" 
+                Margin="125,275,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"
+                Visibility="Hidden"/>
 
         <Label x:Name="lblResults" 
                Content="" 

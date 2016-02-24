@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GuessTheNumber;
 using GuessTheNumber.CompareStrategies;
+using Xceed.Wpf.Toolkit;
 
 namespace GuessTheNumberGui
 {
@@ -23,6 +25,7 @@ namespace GuessTheNumberGui
     {
         public List<CompareStrategy> Modes { get; set; }
         public string ButtonText { get; private set; }
+        private Number Number { get; set; }
 
         public MainWindow()
         {
@@ -39,7 +42,31 @@ namespace GuessTheNumberGui
 
         private void btnCheckStart_Click(object sender, RoutedEventArgs e)
         {
-            //if(ButtonText=="Start" && )
+            var value = new[] { SetUninitializedNumeric(txtNumber1), SetUninitializedNumeric(txtNumber2),
+                SetUninitializedNumeric(txtNumber3), SetUninitializedNumeric(txtNumber4) };
+
+            Console.WriteLine(ButtonText);
+
+            if (ButtonText == "Start" && (Number == null || Number.Compare(value)))
+            {
+                ButtonText = "Check!";
+
+                
+
+                //Number = new Number(cmbMode.GetValue());
+            }
+            else
+            {
+                ButtonText = "Meh!";
+            }
+        }
+
+        private int SetUninitializedNumeric(IntegerUpDown txtNumber)
+        {
+            if (txtNumber.Value == null)
+                txtNumber.Value = 0;
+
+            return txtNumber.Value.GetValueOrDefault();
         }
     }
 }

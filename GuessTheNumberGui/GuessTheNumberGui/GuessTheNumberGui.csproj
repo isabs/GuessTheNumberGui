@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GuessTheNumber">
+    <Reference Include="GuessTheNumber, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Documents\GuessTheNumber\GuessTheNumber\obj\Debug\GuessTheNumber.dll</HintPath>
     </Reference>
     <Reference Include="System" />
