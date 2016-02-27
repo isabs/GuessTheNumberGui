@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GuessTheNumberGui"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:guessTheNumberGui="clr-namespace:GuessTheNumberGui"
         mc:Ignorable="d"
         Title="Guess the number!" Height="350" Width="640">
+    <Window.DataContext>
+        <guessTheNumberGui:MainWindowViewModel />
+    </Window.DataContext>
     <Grid Background="Black">
 
         <Button x:Name="btnStart" 
@@ -55,8 +58,8 @@
                   Margin="20,80,0,0" 
                   VerticalAlignment="Top" 
                   Width="120" 
-                  SelectionChanged="comboBox_SelectionChanged" 
-                  ItemsSource="{Binding Path=Modes}"
+                  ItemsSource="{Binding Path=Modes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding ActualSelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Name"
                    />
 
@@ -66,7 +69,8 @@
                   Content="With sum" 
                   HorizontalAlignment="Left" 
                   Margin="229,80,0,0" 
-                  VerticalAlignment="Top"/>
+                  VerticalAlignment="Top"
+                  IsChecked="{Binding Path=WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label x:Name="lblSum" 
                Content="{Binding Path=SumLabel}" 
@@ -78,7 +82,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber2"
-            Value="0" 
+            Value="{Binding SecondDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="97,130,485,160"
@@ -87,7 +91,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber1"
-            Value="0" 
+            Value="{Binding FirstDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="25,130,557,160"
@@ -96,7 +100,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber4"
-            Value="0" 
+            Value="{Binding FourthDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="241,130,341,160"
@@ -105,7 +109,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber3"
-            Value="0" 
+            Value="{Binding ThirdDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
             Minimum="0"
             Maximum="9"
             Margin="169,130,413,160"
