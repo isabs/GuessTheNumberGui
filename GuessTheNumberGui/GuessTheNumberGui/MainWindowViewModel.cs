@@ -9,8 +9,13 @@ using Xceed.Wpf.Toolkit;
 
 namespace GuessTheNumberGui
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
+        private Visibility _startVisibility ;
+        private Visibility _checkVisibility;
+
+        private bool _gameStarted;
+
         public int[] CurrentNumber { get; set; }
 
         public int FirstDigit
@@ -41,12 +46,39 @@ namespace GuessTheNumberGui
         public CompareStrategy ActualSelectedMode { get; set; }
         public bool WithSum { get; set; }
 
-        public Visibility StartVisibility { get; set; }
-        public Visibility CheckVisibility { get; set; }
+        public Visibility StartVisibility
+        {
+            get { return _startVisibility; }
+            set
+            {
+                _startVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility CheckVisibility
+        {
+            get { return _checkVisibility; }
+            set
+            {
+                _checkVisibility = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public string SumLabel { get; set; }
         private Number Number { get; set; }
+
+        public bool GameStarted
+        {
+            get { return _gameStarted;}
+            set
+            {
+                _gameStarted = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand StartClickCommand { get { return new StartCommand(StartGame, () => true); } }
 

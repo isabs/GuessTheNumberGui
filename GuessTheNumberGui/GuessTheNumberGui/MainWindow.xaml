@@ -21,7 +21,7 @@
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"
-                Visibility="Visible"/>
+                Visibility="{Binding StartVisibility}"/>
 
         <Button x:Name="btnCheck" 
                 Background="DarkSlateBlue" 
@@ -32,7 +32,7 @@
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"
-                Visibility="Hidden"/>
+                Visibility="{Binding CheckVisibility}"/>
 
         <Label x:Name="lblResults" 
                Content="" 
@@ -61,6 +61,7 @@
                   ItemsSource="{Binding Path=Modes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding ActualSelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Name"
+                  IsReadOnly="{Binding GameStarted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    />
 
         <CheckBox x:Name="chkWithSum" 
@@ -70,7 +71,8 @@
                   HorizontalAlignment="Left" 
                   Margin="229,80,0,0" 
                   VerticalAlignment="Top"
-                  IsChecked="{Binding Path=WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                  IsChecked="{Binding Path=WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  />
 
         <Label x:Name="lblSum" 
                Content="{Binding Path=SumLabel}" 
