@@ -61,8 +61,7 @@
                   ItemsSource="{Binding Path=Modes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding ActualSelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Name"
-                  IsReadOnly="{Binding GameStarted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                   />
+                  IsEnabled="{Binding Path=GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <CheckBox x:Name="chkWithSum" 
                   Foreground="White" 
@@ -72,16 +71,16 @@
                   Margin="229,80,0,0" 
                   VerticalAlignment="Top"
                   IsChecked="{Binding Path=WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  IsEnabled="{Binding Path=NotGameStarted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding Path=GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   />
 
         <Label x:Name="lblSum" 
                Content="{Binding Path=SumLabel}" 
                Foreground="White" 
                HorizontalAlignment="Left" 
-               Margin="125,230,0,0" 
+               Margin="25,230,0,0" 
                VerticalAlignment="Top" 
-               Width="75"/>
+               Width="266"/>
 
         <xctk:IntegerUpDown
             Name="txtNumber2"

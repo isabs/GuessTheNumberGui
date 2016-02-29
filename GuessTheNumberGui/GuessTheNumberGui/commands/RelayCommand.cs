@@ -3,17 +3,17 @@ using System.Windows.Input;
 
 namespace GuessTheNumberGui.commands
 {
-    public class StartCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private readonly Func<Boolean> _canExecute;
         private readonly Action _execute;
 
-        public StartCommand(Action execute)
+        public RelayCommand(Action execute)
           : this(execute, null)
         {
         }
 
-        public StartCommand(Action execute, Func<Boolean> canExecute)
+        public RelayCommand(Action execute, Func<Boolean> canExecute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");

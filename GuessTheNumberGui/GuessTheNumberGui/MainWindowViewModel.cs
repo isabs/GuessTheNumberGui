@@ -24,25 +24,41 @@ namespace GuessTheNumberGui
         public int FirstDigit
         {
             get { return CurrentNumber[0]; }
-            set { CurrentNumber[0] = value; }
+            set
+            {
+                CurrentNumber[0] = value; 
+                OnPropertyChanged();
+            }
         }
 
         public int SecondDigit
         {
             get { return CurrentNumber[1]; }
-            set { CurrentNumber[1] = value; }
+            set
+            {
+                CurrentNumber[1] = value;
+                OnPropertyChanged();
+            }
         }
 
         public int ThirdDigit
         {
             get { return CurrentNumber[2]; }
-            set { CurrentNumber[2] = value; }
+            set
+            {
+                CurrentNumber[2] = value;
+                OnPropertyChanged();
+            }
         }
 
         public int FourthDigit
         {
             get { return CurrentNumber[3]; }
-            set { CurrentNumber[3] = value; }
+            set
+            {
+                CurrentNumber[3] = value;
+                OnPropertyChanged();
+            }
         }
 
         #endregion
@@ -85,25 +101,24 @@ namespace GuessTheNumberGui
 
         private Number Number { get; set; }
 
-        public bool GameStarted
+/*        public bool GameStarted
         {
             get { return _gameStarted;}
             set
             {
                 _gameStarted = value;
                 OnPropertyChanged();
-                OnPropertyChanged("NotGameStarted");
+                OnPropertyChanged("GameEnded");
             }
-        }
+        }*/
 
-        public bool NotGameStarted
+        public bool GameEnded
         {
-            get { return !_gameStarted; }
+            get { return _gameStarted; }
             set
             {
-                _gameStarted = !value;
+                _gameStarted = value;
                 OnPropertyChanged();
-                OnPropertyChanged("GameStarted");
             }
         }
 
@@ -117,8 +132,8 @@ namespace GuessTheNumberGui
             }
         }
 
-        public ICommand StartClickCommand { get { return new StartCommand(StartGame, () => true); } }
-        public ICommand CheckClickCommand { get { return new StartCommand(Check, () => true); } }
+        public ICommand StartClickCommand { get { return new RelayCommand(StartGame, () => true); } }
+        public ICommand CheckClickCommand { get { return new RelayCommand(Check, () => true); } }
 
         public MainWindowViewModel()
         {
@@ -128,7 +143,7 @@ namespace GuessTheNumberGui
             SumLabel = string.Empty;
             StartVisibility = Visibility.Visible;
             CheckVisibility = Visibility.Hidden;
-            GameStarted = false;
+            GameEnded = true;
         }
 
         public void StartGame()
@@ -142,11 +157,11 @@ namespace GuessTheNumberGui
 
                 Number.Start();
 
-                GameStarted = true;
+                GameEnded = false;
 
                 if (WithSum)
                 {
-                    SumLabel = "Sum of digits should be " + Number.GetSumOfDigits();
+                    SumLabel = string.Format("Sum of digits should be " + Number.GetSumOfDigits());
                 }
             }
             else
@@ -165,7 +180,7 @@ namespace GuessTheNumberGui
                 StartVisibility = Visibility.Visible;
                 CheckVisibility = Visibility.Hidden;
 
-                GameStarted = false;
+                GameEnded = true;
                 SumLabel = string.Empty;
 
                 Number = null;
@@ -173,5 +188,5 @@ namespace GuessTheNumberGui
         }
     }
 
-    //dodac congratulations z fajerwerkami
+    //add congratulations view with fireworks
 }
