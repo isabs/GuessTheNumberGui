@@ -5,6 +5,7 @@ using System.Windows.Input;
 using GuessTheNumber;
 using GuessTheNumber.CompareStrategies;
 using GuessTheNumberGui.commands;
+using GuessTheNumberGui.Controlers;
 using Xceed.Wpf.Toolkit;
 
 namespace GuessTheNumberGui
@@ -14,19 +15,11 @@ namespace GuessTheNumberGui
         private Visibility _startVisibility ;
         private Visibility _checkVisibility;
         private bool _gameStarted;
-        private string _sumLabel;
         private string _resultsText;
 
-        #region numeric up down
-
         public CurrentNumberControler CurrentNumberControler { get; private set; }
-
-        #endregion
-
-
-        public List<CompareStrategy> Modes { get; set; }
-        public CompareStrategy ActualSelectedMode { get; set; }
-        public bool WithSum { get; set; }
+        public ComboControler ComboControler { get; set; }
+        public SumModeControler SumModeControler { get; set; }
 
         public Visibility StartVisibility
         {
@@ -48,29 +41,7 @@ namespace GuessTheNumberGui
             }
         }
 
-
-        public string SumLabel
-        {
-            get { return _sumLabel; }
-            set
-            {
-                _sumLabel = value;
-                OnPropertyChanged();
-            }
-        }
-
         private Number Number { get; set; }
-
-/*        public bool GameStarted
-        {
-            get { return _gameStarted;}
-            set
-            {
-                _gameStarted = value;
-                OnPropertyChanged();
-                OnPropertyChanged("GameEnded");
-            }
-        }*/
 
         public bool GameEnded
         {
@@ -98,9 +69,9 @@ namespace GuessTheNumberGui
         public MainWindowViewModel()
         {
             CurrentNumberControler = new CurrentNumberControler();
-            Modes = new List<CompareStrategy>{ new CompareDigits(), new CompareAll() };
-            ActualSelectedMode = Modes[0];
-            SumLabel = string.Empty;
+            ComboControler = new ComboControler();
+            SumModeControler = new SumModeControler();
+          
             StartVisibility = Visibility.Visible;
             CheckVisibility = Visibility.Hidden;
             GameEnded = true;
@@ -109,19 +80,19 @@ namespace GuessTheNumberGui
         public void StartGame()
         {
             if (Number == null || Number.Compare(CurrentNumberControler.CurrentNumber))
-            { // starting new game! else something bad is happening..
+            {
                 StartVisibility = Visibility.Hidden;
                 CheckVisibility = Visibility.Visible;
 
-                Number = new Number(4, ActualSelectedMode);
+                Number = new Number(4, ComboControler.ActualSelectedMode);
 
                 Number.Start();
 
                 GameEnded = false;
 
-                if (WithSum)
+                if (SumModeControler.WithSum)
                 {
-                    SumLabel = string.Format("Sum of digits should be " + Number.GetSumOfDigits());
+                    SumModeControler.SumLabel = string.Format("Sum of digits should be " + Number.GetSumOfDigits());
                 }
             }
             else
@@ -136,12 +107,12 @@ namespace GuessTheNumberGui
             ResultsText = Number.CompareText(CurrentNumberControler.CurrentNumber);
 
             if (Number.Compare(CurrentNumberControler.CurrentNumber))
-            { //game ends!
+            {
                 StartVisibility = Visibility.Visible;
                 CheckVisibility = Visibility.Hidden;
 
                 GameEnded = true;
-                SumLabel = string.Empty;
+                SumModeControler.SumLabel = string.Empty;
 
                 Number = null;
             }

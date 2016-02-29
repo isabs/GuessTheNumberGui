@@ -83,7 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CurrentNumberControler.cs" />
+    <Compile Include="Controlers\ComboControler.cs" />
+    <Compile Include="Controlers\CurrentNumberControler.cs" />
+    <Compile Include="Controlers\SumModeControler.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

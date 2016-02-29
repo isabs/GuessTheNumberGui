@@ -1,10 +1,14 @@
 ﻿using System;
 
-namespace GuessTheNumberGui
+namespace GuessTheNumberGui.Controlers
 {
     public class CurrentNumberControler : ViewModelBase
     {
+        private int _currentSum;
+
         public int[] CurrentNumber { get; set; }
+
+        public string CurrentSum => "Current sum: " + _currentSum;
 
 
         public CurrentNumberControler()
@@ -19,6 +23,7 @@ namespace GuessTheNumberGui
             {
                 CurrentNumber[0] = value;
                 OnPropertyChanged();
+                RefreshSum();
             }
         }
 
@@ -29,6 +34,7 @@ namespace GuessTheNumberGui
             {
                 CurrentNumber[1] = value;
                 OnPropertyChanged();
+                RefreshSum();
             }
         }
 
@@ -39,6 +45,7 @@ namespace GuessTheNumberGui
             {
                 CurrentNumber[2] = value;
                 OnPropertyChanged();
+                RefreshSum();
             }
         }
 
@@ -49,10 +56,17 @@ namespace GuessTheNumberGui
             {
                 CurrentNumber[3] = value;
                 OnPropertyChanged();
+                RefreshSum();
             }
         }
 
-        public int GetSumOfDigits()
+        private void RefreshSum()
+        {
+            _currentSum = GetSumOfDigits();
+            OnPropertyChanged("CurrentSum");
+        }
+
+        private int GetSumOfDigits()
         {
             var sum = 0;
             Array.ForEach(CurrentNumber, digit => sum+=digit);

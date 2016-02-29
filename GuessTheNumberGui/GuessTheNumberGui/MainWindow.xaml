@@ -58,8 +58,8 @@
                   Margin="20,80,0,0" 
                   VerticalAlignment="Top" 
                   Width="120" 
-                  ItemsSource="{Binding Path=Modes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding ActualSelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding Path=ComboControler.Modes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=ComboControler.ActualSelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Name"
                   IsEnabled="{Binding Path=GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
@@ -70,12 +70,12 @@
                   HorizontalAlignment="Left" 
                   Margin="229,80,0,0" 
                   VerticalAlignment="Top"
-                  IsChecked="{Binding Path=WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsChecked="{Binding Path=SumModeControler.WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   IsEnabled="{Binding Path=GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   />
 
         <Label x:Name="lblSum" 
-               Content="{Binding Path=SumLabel}" 
+               Content="{Binding Path=SumModeControler.SumLabel}" 
                Foreground="White" 
                HorizontalAlignment="Left" 
                Margin="25,230,0,0" 
@@ -117,5 +117,14 @@
             Margin="169,130,413,160"
             Foreground="White"
             Background="DarkSlateBlue"/>
+        
+        <Label 
+            x:Name="lblCurrentSum" 
+            Content="{Binding Path=CurrentNumberControler.CurrentSum, UpdateSourceTrigger=PropertyChanged}" 
+            Foreground="White" 
+            HorizontalAlignment="Left" 
+            Margin="25,175,0,0" 
+            VerticalAlignment="Top" 
+            Width="266"/>
     </Grid>
 </Window>
