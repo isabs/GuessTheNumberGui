@@ -13,14 +13,17 @@ namespace GuessTheNumberGui
     {
         private Visibility _startVisibility ;
         private Visibility _checkVisibility;
-
         private bool _gameStarted;
+        private string _sumLabel;
+        private string _resultsText;
 
-        public int[] CurrentNumber { get; set; }
+        #region numeric up down
+
+        private int[] CurrentNumber { get; set; }
 
         public int FirstDigit
         {
-            get { return CurrentNumber[0]; } 
+            get { return CurrentNumber[0]; }
             set { CurrentNumber[0] = value; }
         }
 
@@ -41,6 +44,9 @@ namespace GuessTheNumberGui
             get { return CurrentNumber[3]; }
             set { CurrentNumber[3] = value; }
         }
+
+        #endregion
+
 
         public List<CompareStrategy> Modes { get; set; }
         public CompareStrategy ActualSelectedMode { get; set; }
@@ -67,7 +73,16 @@ namespace GuessTheNumberGui
         }
 
 
-        public string SumLabel { get; set; }
+        public string SumLabel
+        {
+            get { return _sumLabel; }
+            set
+            {
+                _sumLabel = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Number Number { get; set; }
 
         public bool GameStarted
@@ -77,10 +92,33 @@ namespace GuessTheNumberGui
             {
                 _gameStarted = value;
                 OnPropertyChanged();
+                OnPropertyChanged("NotGameStarted");
+            }
+        }
+
+        public bool NotGameStarted
+        {
+            get { return !_gameStarted; }
+            set
+            {
+                _gameStarted = !value;
+                OnPropertyChanged();
+                OnPropertyChanged("GameStarted");
+            }
+        }
+
+        public string ResultsText
+        {
+            get { return _resultsText;  }
+            set
+            {
+                _resultsText = value;
+                OnPropertyChanged();
             }
         }
 
         public ICommand StartClickCommand { get { return new StartCommand(StartGame, () => true); } }
+        public ICommand CheckClickCommand { get { return new StartCommand(Check, () => true); } }
 
         public MainWindowViewModel()
         {
@@ -90,10 +128,10 @@ namespace GuessTheNumberGui
             SumLabel = string.Empty;
             StartVisibility = Visibility.Visible;
             CheckVisibility = Visibility.Hidden;
-
+            GameStarted = false;
         }
 
-        private void StartGame()
+        public void StartGame()
         {
             if (Number == null || Number.Compare(CurrentNumber))
             { // starting new game! else something bad is happening..
@@ -104,19 +142,36 @@ namespace GuessTheNumberGui
 
                 Number.Start();
 
-/*                cmbMode.IsReadOnly = true;
+                GameStarted = true;
 
-                if (withSum)
+                if (WithSum)
                 {
                     SumLabel = "Sum of digits should be " + Number.GetSumOfDigits();
-                }*/
-
-                //Number = new Number(cmbMode.GetValue());
+                }
             }
             else
             {
                 throw new Exception("Clicked Start Button, which cannot exist...");
             }
         }
+
+        public void Check()
+        {
+
+            ResultsText = Number.CompareText(CurrentNumber);
+
+            if (Number.Compare(CurrentNumber))
+            { //game ends!
+                StartVisibility = Visibility.Visible;
+                CheckVisibility = Visibility.Hidden;
+
+                GameStarted = false;
+                SumLabel = string.Empty;
+
+                Number = null;
+            }
+        }
     }
+
+    //dodac congratulations z fajerwerkami
 }

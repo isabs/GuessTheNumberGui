@@ -35,7 +35,7 @@
                 Visibility="{Binding CheckVisibility}"/>
 
         <Label x:Name="lblResults" 
-               Content="" 
+               Content= "{Binding ResultsText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                Foreground="White" 
                HorizontalAlignment="Left" 
                Margin="320,10,0,0" 
@@ -72,6 +72,7 @@
                   Margin="229,80,0,0" 
                   VerticalAlignment="Top"
                   IsChecked="{Binding Path=WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding Path=NotGameStarted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   />
 
         <Label x:Name="lblSum" 
