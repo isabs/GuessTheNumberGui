@@ -84,7 +84,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber2"
-            Value="{Binding SecondDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Value="{Binding Path=CurrentNumberControler.SecondDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="97,130,485,160"
@@ -93,7 +93,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber1"
-            Value="{Binding FirstDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Value="{Binding Path=CurrentNumberControler.FirstDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="25,130,557,160"
@@ -102,7 +102,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber4"
-            Value="{Binding FourthDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Value="{Binding Path=CurrentNumberControler.FourthDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="241,130,341,160"
@@ -111,7 +111,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber3"
-            Value="{Binding ThirdDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+            Value="{Binding Path=CurrentNumberControler.ThirdDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
             Minimum="0"
             Maximum="9"
             Margin="169,130,413,160"

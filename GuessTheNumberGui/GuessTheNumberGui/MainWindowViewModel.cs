@@ -19,47 +19,7 @@ namespace GuessTheNumberGui
 
         #region numeric up down
 
-        private int[] CurrentNumber { get; set; }
-
-        public int FirstDigit
-        {
-            get { return CurrentNumber[0]; }
-            set
-            {
-                CurrentNumber[0] = value; 
-                OnPropertyChanged();
-            }
-        }
-
-        public int SecondDigit
-        {
-            get { return CurrentNumber[1]; }
-            set
-            {
-                CurrentNumber[1] = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int ThirdDigit
-        {
-            get { return CurrentNumber[2]; }
-            set
-            {
-                CurrentNumber[2] = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int FourthDigit
-        {
-            get { return CurrentNumber[3]; }
-            set
-            {
-                CurrentNumber[3] = value;
-                OnPropertyChanged();
-            }
-        }
+        public CurrentNumberControler CurrentNumberControler { get; private set; }
 
         #endregion
 
@@ -137,7 +97,7 @@ namespace GuessTheNumberGui
 
         public MainWindowViewModel()
         {
-            CurrentNumber = new[] {0, 0, 0, 0};
+            CurrentNumberControler = new CurrentNumberControler();
             Modes = new List<CompareStrategy>{ new CompareDigits(), new CompareAll() };
             ActualSelectedMode = Modes[0];
             SumLabel = string.Empty;
@@ -148,7 +108,7 @@ namespace GuessTheNumberGui
 
         public void StartGame()
         {
-            if (Number == null || Number.Compare(CurrentNumber))
+            if (Number == null || Number.Compare(CurrentNumberControler.CurrentNumber))
             { // starting new game! else something bad is happening..
                 StartVisibility = Visibility.Hidden;
                 CheckVisibility = Visibility.Visible;
@@ -173,9 +133,9 @@ namespace GuessTheNumberGui
         public void Check()
         {
 
-            ResultsText = Number.CompareText(CurrentNumber);
+            ResultsText = Number.CompareText(CurrentNumberControler.CurrentNumber);
 
-            if (Number.Compare(CurrentNumber))
+            if (Number.Compare(CurrentNumberControler.CurrentNumber))
             { //game ends!
                 StartVisibility = Visibility.Visible;
                 CheckVisibility = Visibility.Hidden;
