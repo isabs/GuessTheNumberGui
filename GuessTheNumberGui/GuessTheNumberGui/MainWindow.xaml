@@ -16,26 +16,26 @@
                 Background="DarkSlateBlue" 
                 Foreground="White" 
                 Content="Start" 
-                Command="{Binding StartClickCommand}"
+                Command="{Binding Path=GameFlowControler.StartClickCommand}"
                 HorizontalAlignment="Left" 
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"
-                Visibility="{Binding StartVisibility}"/>
+                Visibility="{Binding Path=GameFlowControler.StartVisibility}"/>
 
         <Button x:Name="btnCheck" 
                 Background="DarkSlateBlue" 
                 Foreground="White" 
                 Content="Check" 
-                Command="{Binding CheckClickCommand}"
+                Command="{Binding Path=GameFlowControler.CheckClickCommand}"
                 HorizontalAlignment="Left" 
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"
-                Visibility="{Binding CheckVisibility}"/>
+                Visibility="{Binding Path=GameFlowControler.CheckVisibility}"/>
 
         <Label x:Name="lblResults" 
-               Content= "{Binding ResultsText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+               Content= "{Binding Path=GameFlowControler.ResultsText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                Foreground="White" 
                HorizontalAlignment="Left" 
                Margin="320,10,0,0" 
@@ -61,7 +61,7 @@
                   ItemsSource="{Binding Path=ComboControler.Modes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=ComboControler.ActualSelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Name"
-                  IsEnabled="{Binding Path=GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                  IsEnabled="{Binding Path=GameFlowControler.GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <CheckBox x:Name="chkWithSum" 
                   Foreground="White" 
@@ -71,7 +71,7 @@
                   Margin="229,80,0,0" 
                   VerticalAlignment="Top"
                   IsChecked="{Binding Path=SumModeControler.WithSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  IsEnabled="{Binding Path=GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding Path=GameFlowControler.GameEnded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   />
 
         <Label x:Name="lblSum" 

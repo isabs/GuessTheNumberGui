@@ -85,6 +85,7 @@
     </ApplicationDefinition>
     <Compile Include="Controlers\ComboControler.cs" />
     <Compile Include="Controlers\CurrentNumberControler.cs" />
+    <Compile Include="Controlers\GameFlowControler.cs" />
     <Compile Include="Controlers\SumModeControler.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
