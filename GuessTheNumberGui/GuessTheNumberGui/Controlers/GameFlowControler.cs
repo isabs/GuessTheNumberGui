@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
 using GuessTheNumber;
 using GuessTheNumberGui.commands;
@@ -12,8 +11,8 @@ namespace GuessTheNumberGui.Controlers
         private ComboControler _comboControler;
         private SumModeControler _sumModeControler;
 
-        private Visibility _startVisibility;
-        private Visibility _checkVisibility;
+        public  ButtonVisibilityControler ButtonVisibilityControler { get; set; }
+
         private bool _gameStarted;
         private string _resultsText;
 
@@ -22,33 +21,16 @@ namespace GuessTheNumberGui.Controlers
         public ICommand StartClickCommand { get { return new RelayCommand(StartGame, () => true); } }
         public ICommand CheckClickCommand { get { return new RelayCommand(Check, () => true); } }
 
-        public Visibility StartVisibility
-        {
-            get { return _startVisibility; }
-            set
-            {
-                _startVisibility = value;
-                OnPropertyChanged();
-            }
-        }
 
-        public Visibility CheckVisibility
-        {
-            get { return _checkVisibility; }
-            set
-            {
-                _checkVisibility = value;
-                OnPropertyChanged();
-            }
-        }
 
         public GameFlowControler(CurrentNumberControler currentNumberControler, ComboControler comboControler, SumModeControler sumModeControler)
         {
-            StartVisibility = Visibility.Visible;
-            CheckVisibility = Visibility.Hidden;
+            ButtonVisibilityControler = new ButtonVisibilityControler();
+
             _currentNumberControler = currentNumberControler;
             _comboControler = comboControler;
             _sumModeControler = sumModeControler;
+
             GameEnded = true;
         }
 
@@ -56,8 +38,7 @@ namespace GuessTheNumberGui.Controlers
         {
             if (Number == null || Number.Compare(_currentNumberControler.CurrentNumber))
             {
-                StartVisibility = Visibility.Hidden;
-                CheckVisibility = Visibility.Visible;
+                ButtonVisibilityControler.MakeCheckVisible();
 
                 Number = new Number(4, _comboControler.ActualSelectedMode);
 
@@ -83,8 +64,7 @@ namespace GuessTheNumberGui.Controlers
 
             if (Number.Compare(_currentNumberControler.CurrentNumber))
             {
-                StartVisibility = Visibility.Visible;
-                CheckVisibility = Visibility.Hidden;
+                ButtonVisibilityControler.MakeStartVisible();
 
                 GameEnded = true;
                 _sumModeControler.SumLabel = string.Empty;
@@ -92,8 +72,6 @@ namespace GuessTheNumberGui.Controlers
                 Number = null;
             }
         }
-
-        
 
         public bool GameEnded
         {

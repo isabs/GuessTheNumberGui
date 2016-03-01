@@ -6,6 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:guessTheNumberGui="clr-namespace:GuessTheNumberGui"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Guess the number!" Height="350" Width="640">
     <Window.DataContext>
         <guessTheNumberGui:MainWindowViewModel />
@@ -21,7 +22,7 @@
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"
-                Visibility="{Binding Path=GameFlowControler.StartVisibility}"/>
+                Visibility="{Binding Path=GameFlowControler.ButtonVisibilityControler.StartVisibility}"/>
 
         <Button x:Name="btnCheck" 
                 Background="DarkSlateBlue" 
@@ -32,7 +33,7 @@
                 Margin="125,275,0,0" 
                 VerticalAlignment="Top" 
                 Width="75"
-                Visibility="{Binding Path=GameFlowControler.CheckVisibility}"/>
+                Visibility="{Binding Path=GameFlowControler.ButtonVisibilityControler.CheckVisibility}"/>
 
         <Label x:Name="lblResults" 
                Content= "{Binding Path=GameFlowControler.ResultsText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -127,4 +128,5 @@
             VerticalAlignment="Top" 
             Width="266"/>
     </Grid>
+    
 </Window>

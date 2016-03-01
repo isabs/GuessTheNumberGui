@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using GuessTheNumber;
-using GuessTheNumberGui.commands;
-using GuessTheNumberGui.Controlers;
+﻿using GuessTheNumberGui.Controlers;
 
 namespace GuessTheNumberGui
 {
@@ -18,13 +13,7 @@ namespace GuessTheNumberGui
         public CurrentNumberControler CurrentNumberControler { get; private set; }
         public ComboControler ComboControler { get; set; }
         public SumModeControler SumModeControler { get; set; }
-
         public GameFlowControler GameFlowControler { get; set; }
-
-
-
-
-
 
         public MainWindowViewModel()
         {
@@ -33,11 +22,7 @@ namespace GuessTheNumberGui
             SumModeControler = new SumModeControler();
 
             GameFlowControler = new GameFlowControler(CurrentNumberControler, ComboControler, SumModeControler);
-
-
         }
-
-
     }
     
 }
