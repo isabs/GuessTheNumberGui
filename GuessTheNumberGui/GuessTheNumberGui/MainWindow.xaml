@@ -118,7 +118,7 @@
             Margin="169,130,413,160"
             Foreground="White"
             Background="DarkSlateBlue"/>
-        
+
         <Label 
             x:Name="lblCurrentSum" 
             Content="{Binding Path=CurrentNumberControler.CurrentSum, UpdateSourceTrigger=PropertyChanged}" 
@@ -126,7 +126,20 @@
             HorizontalAlignment="Left" 
             Margin="25,175,0,0" 
             VerticalAlignment="Top" 
-            Width="266"/>
+            Width="215"/>
+
+        <Button x:Name="btnSetDigits" 
+                Background="DarkSlateBlue" 
+                Foreground="White" 
+                Content="..." 
+                Command="{Binding Path=CurrentNumberControler.SetDigitsClickCommand}"
+                HorizontalAlignment="Left" 
+                Margin="304,130,0,0" 
+                VerticalAlignment="Top" 
+                Width="16" 
+                Height="20"
+                Visibility="{Binding Path=GameFlowControler.ButtonVisibilityControler.CheckVisibility}"
+                />
     </Grid>
-    
+
 </Window>

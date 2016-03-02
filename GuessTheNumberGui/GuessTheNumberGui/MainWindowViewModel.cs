@@ -6,7 +6,7 @@ namespace GuessTheNumberGui
     {   // TODO: further refactoring
         // TODO: Adding button to automatic setting up-downs based on desired sum
         // TODO: Super flashy congratulations view
-        // TODO: Number of wins, steps, ranking; this must be saved to file
+        // TODO: Number of wins, steps, ranking; this must be saved to db
 
 
 

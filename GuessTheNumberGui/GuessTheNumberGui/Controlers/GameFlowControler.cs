@@ -13,7 +13,7 @@ namespace GuessTheNumberGui.Controlers
 
         public  ButtonVisibilityControler ButtonVisibilityControler { get; set; }
 
-        private bool _gameStarted;
+        private bool _gameEnded;
         private string _resultsText;
 
         private Number Number { get; set; }
@@ -49,6 +49,11 @@ namespace GuessTheNumberGui.Controlers
                 if (_sumModeControler.WithSum)
                 {
                     _sumModeControler.SumLabel = string.Format("Sum of digits should be " + Number.GetSumOfDigits());
+                    _currentNumberControler.DesiredSum = Number.GetSumOfDigits();
+                }
+                else
+                {
+                    _currentNumberControler.DesiredSum = -1;
                 }
             }
             else
@@ -75,10 +80,10 @@ namespace GuessTheNumberGui.Controlers
 
         public bool GameEnded
         {
-            get { return _gameStarted; }
+            get { return _gameEnded; }
             set
             {
-                _gameStarted = value;
+                _gameEnded = value;
                 OnPropertyChanged();
             }
         }
