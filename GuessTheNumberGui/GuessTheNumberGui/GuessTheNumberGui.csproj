@@ -105,7 +105,9 @@
     <Compile Include="Controlers\ButtonVisibilityControler.cs" />
     <Compile Include="Controlers\ComboControler.cs" />
     <Compile Include="Controlers\CurrentNumberControler.cs" />
+    <Compile Include="Controlers\CurrentNumberControler2.cs" />
     <Compile Include="Controlers\GameFlowControler.cs" />
+    <Compile Include="Controlers\NumericControler.cs" />
     <Compile Include="Controlers\SumModeControler.cs" />
     <Compile Include="MainWindow2.xaml.cs">
       <DependentUpon>MainWindow2.xaml</DependentUpon>

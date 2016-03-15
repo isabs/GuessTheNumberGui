@@ -272,18 +272,25 @@
                     </Grid>
 
                     <Grid Height="20"/>
+                    
+                    <Grid Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label x:Name="lblCurrentSum" 
-                            Content="{Binding Path=CurrentNumberControler.CurrentSum, UpdateSourceTrigger=PropertyChanged}" 
-                            Foreground="White" 
-                            VerticalAlignment="Top" 
-                            Height="25"/>
-
-                    <Label x:Name="lblSum" 
-                           Content="{Binding Path=SumModeControler.SumLabel}" 
-                           Foreground="White"
-                           VerticalAlignment="Top" 
-                           Height="22"/>
+                        <Label x:Name="lblCurrentSum" 
+                                   Grid.Column="0" 
+                                Content="{Binding Path=CurrentNumberControler.CurrentSum, UpdateSourceTrigger=PropertyChanged}" 
+                                Foreground="White" 
+                            />
+                        
+                        <Label x:Name="lblSum" 
+                               Grid.Column="1" 
+                               Content="{Binding Path=SumModeControler.SumLabel}" 
+                               Foreground="White" 
+                           />
+                    </Grid>
 
                     <Label x:Name="lblStepsNr" 
                             Content="(to be implemented)" 

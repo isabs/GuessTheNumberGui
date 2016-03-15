@@ -46,7 +46,7 @@ namespace GuessTheNumberGui.Controlers
 
                 if (_sumModeControler.WithSum)
                 {
-                    _sumModeControler.SumLabel = string.Format("Sum of digits should be " + Number.GetSumOfDigits());
+                    _sumModeControler.SumLabel = string.Format("Should be " + Number.GetSumOfDigits());
                     _currentNumberControler.DesiredSum = Number.GetSumOfDigits();
                 }
                 else
