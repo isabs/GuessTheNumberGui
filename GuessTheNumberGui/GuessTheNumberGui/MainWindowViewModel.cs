@@ -13,14 +13,14 @@ namespace GuessTheNumberGui
 
 
 
-        public CurrentNumberControler CurrentNumberControler { get; private set; }
+        public CurrentNumberControler2 CurrentNumberControler { get; private set; }
         public ComboControler ComboControler { get; set; }
         public SumModeControler SumModeControler { get; set; }
         public GameFlowControler GameFlowControler { get; set; }
 
         public MainWindowViewModel()
         {
-            CurrentNumberControler = new CurrentNumberControler();
+            CurrentNumberControler = new CurrentNumberControler2();
             ComboControler = new ComboControler();
             SumModeControler = new SumModeControler();
 

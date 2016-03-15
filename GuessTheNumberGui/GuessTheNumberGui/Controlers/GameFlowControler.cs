@@ -7,7 +7,7 @@ namespace GuessTheNumberGui.Controlers
 {
     public class GameFlowControler : ViewModelBase
     {
-        private CurrentNumberControler _currentNumberControler;
+        private CurrentNumberControler2 _currentNumberControler;
         private ComboControler _comboControler;
         private SumModeControler _sumModeControler;
 
@@ -21,7 +21,7 @@ namespace GuessTheNumberGui.Controlers
         public ICommand StartClickCommand { get { return new RelayCommand(StartGame, () => true); } }
         public ICommand CheckClickCommand { get { return new RelayCommand(Check, () => true); } }
 
-        public GameFlowControler(CurrentNumberControler currentNumberControler, ComboControler comboControler, SumModeControler sumModeControler)
+        public GameFlowControler(CurrentNumberControler2 currentNumberControler, ComboControler comboControler, SumModeControler sumModeControler)
         {
             ButtonVisibilityControler = new ButtonVisibilityControler();
 

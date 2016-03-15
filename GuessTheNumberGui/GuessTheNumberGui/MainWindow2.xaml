@@ -82,7 +82,7 @@
 
                             <xctk:IntegerUpDown
                                     Name="txtNumber0"
-                                    Value="{Binding Path=CurrentNumberControler.Digit0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Value="{Binding Path=CurrentNumberControler.Numerics[0].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                     Minimum="0"
                                     Maximum="9"
                                     Foreground="White"
@@ -133,7 +133,7 @@
 
                             <xctk:IntegerUpDown
                                     Name="txtNumber1"
-                                    Value="{Binding Path=CurrentNumberControler.Digit1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Value="{Binding Path=CurrentNumberControler.Numerics[1].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                     Minimum="0"
                                     Maximum="9"
                                     Foreground="White"
@@ -183,7 +183,7 @@
 
                             <xctk:IntegerUpDown
                                     Name="txtNumber2"
-                                    Value="{Binding Path=CurrentNumberControler.Digit2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Value="{Binding Path=CurrentNumberControler.Numerics[2].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                     Minimum="0"
                                     Maximum="9"
                                     Foreground="White"
@@ -233,7 +233,7 @@
 
                             <xctk:IntegerUpDown
                                     Name="txtNumber3"
-                                    Value="{Binding Path=CurrentNumberControler.Digit3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Value="{Binding Path=CurrentNumberControler.Numerics[3].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                     Minimum="0"
                                     Maximum="9"
                                     Foreground="White"

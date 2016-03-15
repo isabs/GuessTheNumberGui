@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GuessTheNumberGui.Controlers
 {
@@ -9,6 +10,7 @@ namespace GuessTheNumberGui.Controlers
         public List<NumericControler> Numerics { get; set; }
         public int DesiredSum { get; set; }
         public string CurrentSum => "Current sum: " + _currentSum;
+        public int[] CurrentNumber => Numerics.Select(numeric => numeric.Value).ToArray();
 
         public CurrentNumberControler2 (int number = 4)
         {

@@ -20,6 +20,7 @@ namespace GuessTheNumberGui.Controlers
             {
                 _value = value; 
                 OnPropertyChanged();
+                _currentNumberControler.RefreshSum();
             }
         }
 
