@@ -53,7 +53,7 @@
                Width="155"/>
 
         <ComboBox x:Name="cmbMode" 
-                  Background="DarkSlateBlue" 
+                  Background="White" 
                   Foreground="DarkSlateBlue" 
                   HorizontalAlignment="Left" 
                   Margin="20,80,0,0" 
@@ -85,7 +85,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber2"
-            Value="{Binding Path=CurrentNumberControler.SecondDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Value="{Binding Path=CurrentNumberControler.Digit2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="97,130,485,160"
@@ -94,7 +94,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber1"
-            Value="{Binding Path=CurrentNumberControler.FirstDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Value="{Binding Path=CurrentNumberControler.Digit1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="25,130,557,160"
@@ -103,7 +103,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber4"
-            Value="{Binding Path=CurrentNumberControler.FourthDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Value="{Binding Path=CurrentNumberControler.Digit4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             Minimum="0"
             Maximum="9"
             Margin="241,130,341,160"
@@ -112,7 +112,7 @@
 
         <xctk:IntegerUpDown
             Name="txtNumber3"
-            Value="{Binding Path=CurrentNumberControler.ThirdDigit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+            Value="{Binding Path=CurrentNumberControler.Digit3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
             Minimum="0"
             Maximum="9"
             Margin="169,130,413,160"

@@ -8,6 +8,9 @@ namespace GuessTheNumberGui
         // TODO: Super flashy congratulations view
         // TODO: Number of wins, steps, ranking; this must be saved to db
 
+        //TODO: easy - Blocking numerics until the game starts
+        //TODO: easy - add step label
+
 
 
         public CurrentNumberControler CurrentNumberControler { get; private set; }

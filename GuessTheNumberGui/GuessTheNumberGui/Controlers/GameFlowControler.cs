@@ -21,8 +21,6 @@ namespace GuessTheNumberGui.Controlers
         public ICommand StartClickCommand { get { return new RelayCommand(StartGame, () => true); } }
         public ICommand CheckClickCommand { get { return new RelayCommand(Check, () => true); } }
 
-
-
         public GameFlowControler(CurrentNumberControler currentNumberControler, ComboControler comboControler, SumModeControler sumModeControler)
         {
             ButtonVisibilityControler = new ButtonVisibilityControler();

@@ -14,59 +14,54 @@ namespace GuessTheNumberGui.Controlers
 
         public string CurrentSum => "Current sum: " + _currentSum;
 
+        public ICommand SetDigitsClickCommand { get { return new RelayCommand(SetDigits, () => true); } }
 
         public CurrentNumberControler()
         {
             CurrentNumber = new[] {0, 0, 0, 0};
         }
 
-        public int FirstDigit
+        public int Digit0
         {
             get { return CurrentNumber[0]; }
-            set
-            {
-                CurrentNumber[0] = value;
-                OnPropertyChanged();
-                RefreshSum();
-            }
+            set { SetDigit(0, value); }
         }
 
-        public int SecondDigit
+        public int Digit1
         {
             get { return CurrentNumber[1]; }
-            set
-            {
-                CurrentNumber[1] = value;
-                OnPropertyChanged();
-                RefreshSum();
-            }
+            set { SetDigit(1, value); }
         }
 
-        public int ThirdDigit
+        public int Digit2
         {
             get { return CurrentNumber[2]; }
-            set
-            {
-                CurrentNumber[2] = value;
-                OnPropertyChanged();
-                RefreshSum();
-            }
+            set {SetDigit(2, value); }
         }
 
-        public int FourthDigit
+        public int Digit3
         {
             get { return CurrentNumber[3]; }
-            set
-            {
-                CurrentNumber[3] = value;
-                OnPropertyChanged();
-                RefreshSum();
-            }
+            set { SetDigit(3, value); }
         }
 
-        public ICommand SetDigitsClickCommand
+        public void SetDigits()
         {
-            get { return new RelayCommand(SetDigits, () => true); } 
+            SetDigitsWithSum(DesiredSum >= 0 ? DesiredSum : Convert.ToInt32(CurrentNumber.Length * 4.5));
+
+            RefreshNumerics();
+        }
+
+        private void SetDigitsWithSum(int sum)
+        {
+            var length = CurrentNumber.Length;
+
+            for (var position = 0; position < length; position++)
+            {
+                CurrentNumber[position] = sum / (length - position);
+
+                sum -= CurrentNumber[position];
+            }
         }
 
         private void RefreshSum()
@@ -77,10 +72,10 @@ namespace GuessTheNumberGui.Controlers
 
         private void RefreshNumerics()
         {
-            OnPropertyChanged("FirstDigit");
-            OnPropertyChanged("SecondDigit");
-            OnPropertyChanged("ThirdDigit");
-            OnPropertyChanged("FourthDigit");
+            OnPropertyChanged("Digit1");
+            OnPropertyChanged("Digit2");
+            OnPropertyChanged("Digit3");
+            OnPropertyChanged("Digit0");
 
             RefreshSum();
         }
@@ -93,23 +88,13 @@ namespace GuessTheNumberGui.Controlers
             return sum;
         }
 
-        public void SetDigits()
+        private void SetDigit(int where, int value)
         {
-            SetDigitsWithSum(DesiredSum >= 0 ? DesiredSum : Convert.ToInt32(CurrentNumber.Length*4.5));
+            CurrentNumber[where] = value;
 
-            RefreshNumerics();
-        }
+            OnPropertyChanged("Digit" + where);
 
-        private void SetDigitsWithSum( int sum )
-        {
-            var length = CurrentNumber.Length;
-
-            for (var position = 0; position < length; position++)
-            {
-                CurrentNumber[position] = sum / (length - position);
-
-                sum -= CurrentNumber[position];
-            }
+            RefreshSum();
         }
     }
 }
