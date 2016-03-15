@@ -51,7 +51,7 @@ namespace GuessTheNumberGui.Controlers
                 }
                 else
                 {
-                    _currentNumberControler.DesiredSum = -1;
+                    _currentNumberControler.DesiredSum = 18;
                 }
             }
             else

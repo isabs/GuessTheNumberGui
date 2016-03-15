@@ -7,8 +7,20 @@ namespace GuessTheNumberGui.Controlers
     {
         private readonly CurrentNumberControler2 _currentNumberControler;
         private int _value;
+        private int _avg;
 
-        public int Avg { get; set; }
+        public int Avg
+        {
+            get
+            {
+                return _avg;
+            }
+            set
+            {
+                _avg = value;
+                OnPropertyChanged();
+            }
+        }
 
         public int Value
         {
@@ -32,6 +44,7 @@ namespace GuessTheNumberGui.Controlers
         {
             _currentNumberControler = currentNumberControler2;
             Value = 0;
+            Avg = 5;
         }
 
 

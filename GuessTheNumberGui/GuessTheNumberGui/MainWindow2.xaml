@@ -92,6 +92,7 @@
 
                             <Button x:Name="btnSetZero0" 
                                     Content="0" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[0].BtnSetZeroClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="0"
@@ -100,7 +101,8 @@
                                     Height="20"/>
 
                             <Button x:Name="btnSetAvg0" 
-                                    Content="5" 
+                                    Content="{Binding Path=CurrentNumberControler.Numerics[0].Avg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[0].BtnSetAvgClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="1"
@@ -110,6 +112,7 @@
 
                             <Button x:Name="btnSetMax0" 
                                     Content="9" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[0].BtnSetMaxClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="2"
@@ -143,6 +146,7 @@
 
                             <Button x:Name="btnSetZero1" 
                                     Content="0" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[1].BtnSetZeroClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="0"
@@ -151,7 +155,8 @@
                                     Height="20"/>
 
                             <Button x:Name="btnSetAvg1" 
-                                    Content="5" 
+                                    Content="{Binding Path=CurrentNumberControler.Numerics[1].Avg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[1].BtnSetAvgClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="1"
@@ -161,6 +166,7 @@
 
                             <Button x:Name="btnSetMax1" 
                                     Content="9" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[1].BtnSetMaxClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="2"
@@ -193,6 +199,7 @@
 
                             <Button x:Name="btnSetZero2" 
                                     Content="0" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[2].BtnSetZeroClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="0"
@@ -201,7 +208,8 @@
                                     Height="20"/>
 
                             <Button x:Name="btnSetAvg2" 
-                                    Content="5" 
+                                    Content="{Binding Path=CurrentNumberControler.Numerics[2].Avg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[2].BtnSetAvgClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="1"
@@ -211,6 +219,7 @@
 
                             <Button x:Name="btnSetMax2" 
                                     Content="9" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[2].BtnSetMaxClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="2"
@@ -243,6 +252,7 @@
 
                             <Button x:Name="btnSetZero3" 
                                     Content="0" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[3].BtnSetZeroClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="0"
@@ -251,7 +261,8 @@
                                     Height="20"/>
 
                             <Button x:Name="btnSetAvg3" 
-                                    Content="5" 
+                                    Content="{Binding Path=CurrentNumberControler.Numerics[3].Avg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[3].BtnSetAvgClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="1"
@@ -261,6 +272,7 @@
 
                             <Button x:Name="btnSetMax3" 
                                     Content="9" 
+                                    Command="{Binding Path=CurrentNumberControler.Numerics[3].BtnSetMaxClick}"
                                     HorizontalAlignment="Left" 
                                     Grid.Row="2" 
                                     Grid.Column="2"

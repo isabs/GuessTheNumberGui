@@ -7,8 +7,20 @@ namespace GuessTheNumberGui.Controlers
     public class CurrentNumberControler2 : ViewModelBase
     {
         private int _currentSum;
+        private int _desiredSum;
+
         public List<NumericControler> Numerics { get; set; }
-        public int DesiredSum { get; set; }
+
+        public int DesiredSum
+        {
+            get { return _desiredSum; }
+            set
+            {
+                _desiredSum = value;
+                SetAvg();
+            } 
+        }
+
         public string CurrentSum => "Current sum: " + _currentSum;
         public int[] CurrentNumber => Numerics.Select(numeric => numeric.Value).ToArray();
 

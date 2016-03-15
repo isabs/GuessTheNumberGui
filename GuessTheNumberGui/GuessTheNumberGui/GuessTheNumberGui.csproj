@@ -104,7 +104,7 @@
     </ApplicationDefinition>
     <Compile Include="Controlers\ButtonVisibilityControler.cs" />
     <Compile Include="Controlers\ComboControler.cs" />
-    <Compile Include="Controlers\CurrentNumberControler.cs" />
+    <None Include="Controlers\CurrentNumberControler.cs.old" />
     <Compile Include="Controlers\CurrentNumberControler2.cs" />
     <Compile Include="Controlers\GameFlowControler.cs" />
     <Compile Include="Controlers\NumericControler.cs" />
